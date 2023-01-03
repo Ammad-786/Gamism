@@ -2,6 +2,9 @@ import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { FaHome, FaInfo, FaProjectDiagram, FaTools, FaEnvelope } from "react-icons/fa";
+import navimg from "../assets/nav-img1.jpg"
+// import { FaFacebook, FaTwitter, FaInstagram, FaUser } from "react-icons/fa";
+
 
 const Path = props => (
   <motion.path
@@ -14,6 +17,7 @@ const Path = props => (
 );
 
 export const MenuToggle = ({ toggle }) => (
+  
   <button onClick={toggle}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
@@ -38,6 +42,7 @@ export const MenuToggle = ({ toggle }) => (
       />
     </svg>
   </button>
+  
 );
 
 const variants = {
@@ -51,7 +56,8 @@ const variants = {
 
 const itemIds = [0, 1, 2, 3, 4];
 const icons = [FaHome, FaInfo, FaProjectDiagram, FaTools, FaEnvelope];
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+// const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+const colors = ["/"];
 const listNames = ["Home", "About Us", "Projects", "Services", "Contact"];
 
 export const Navigation = (props) => (
@@ -59,41 +65,43 @@ export const Navigation = (props) => (
       style={{ display: props.isOpen ? "block" : "none" }}
       variants={variants}
     >
+      <motion.h2 className=" text-6xl font-bold text-center mb-4 pl-[100px] mt-[-80px]" initial={{ y: -50 }} animate={{ y: 0 }}>Gamism</motion.h2>
       {itemIds.map(i => (
         <MenuItem i={i} key={i} colors={colors} />
-        ))}
+        ))} 
     </motion.ul>
   );
   
   const MenuItem = ({ i, colors }) => {
     const style = { border: `2px solid ${colors[i]}` };
     return (
-      <li className="text-lg font-semibold" style={{color: colors[i]}}>
-        <motion.div
-          className="flex items-center justify-center w-16 h-16 rounded-full mr-6"
-          style={style}
-          variants={variants}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {React.createElement(icons[i])}
-        </motion.div>
-        <motion.div
-          className="text-placeholder mx-auto justify-center items-center text-center p-2 "
-          style={style}
-          variants={variants}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {listNames[i]}
-        </motion.div>
-      </li>
+        <>
+        <li className="text-lg font-semibold" style={{ color: colors[i] }}>
+            <motion.div
+                className="flex items-center justify-center w-16 h-16 rounded-full mr-10"
+                style={style}
+                variants={variants}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                {React.createElement(icons[i])}
+            </motion.div>
+            <motion.div
+                className="text-placeholder mx-auto justify-center items-center text-center p-2 "
+                style={style}
+                variants={variants}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                {listNames[i]}
+            </motion.div>
+        </li></>
     );
   };
   
   const sidebar = {
-    open: (height = 200) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    open: (height = 160) => ({
+      clipPath: `circle(${height * 2 + 200}px at 40px 60px)`,
       transition: {
         type: "spring",
         stiffness: 20,
@@ -112,18 +120,60 @@ export const Navigation = (props) => (
   };
   
   export const Navbar = () => {
+    
+    const navVariants = {
+      hidden: {
+        x: '-100%',
+      },
+      visible: {
+        x: 0,
+        transition: {
+          type: 'spring',
+          mass: 0.5,
+          damping: 200,
+        },
+      },
+    };
+  
+    const backgroundVariants = {
+      hidden: {
+        scale: 0,
+      },
+      visible: {
+        scale: 1,
+        transition: {
+          type: "spring",
+          mass: 1,
+          damping: 40,
+        },
+      },
+    };
+  
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
   
     return (
-      <motion.nav
-        initial={false}
-        animate={isOpen ? "open" : "closed"}
-        ref={containerRef}
-      >
-        <motion.div className="background" variants={sidebar} />
-        <Navigation isOpen={isOpen} toggleOpen={toggleOpen} />
-        <MenuToggle toggle={toggleOpen} />
-      </motion.nav>
+      <div>
+        <motion.nav
+          initial={true}
+          animate={isOpen ? "open" : "closed"}
+          ref={containerRef}
+          variants={navVariants}
+          className="w-full md:w-[340px]"
+          // style={{ backgroundColor: isOpen ? "transparent" : "transparent" }}
+        >
+          
+          <motion.div
+            className="background"
+            variants={backgroundVariants}
+            style={{ backgroundImage: `url(${navimg})` }}
+            initial="hidden"
+            animate={isOpen ? "visible" : "hidden"}
+          />
+          <motion.div className="background " variants={sidebar} />
+          <Navigation isOpen={isOpen} toggleOpen={toggleOpen} />
+          <MenuToggle toggle={toggleOpen} />
+        </motion.nav>
+      </div>
     );
   };
