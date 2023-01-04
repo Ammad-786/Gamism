@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { FaHome, FaInfo, FaProjectDiagram, FaTools, FaEnvelope } from "react-icons/fa";
-import navimg from "../assets/nav-img1.jpg"
+import navimg from "../assets/nav-img3.jpg"
 // import { FaFacebook, FaTwitter, FaInstagram, FaUser } from "react-icons/fa";
 
 
@@ -76,9 +76,9 @@ export const Navigation = (props) => (
     const style = { border: `2px solid ${colors[i]}` };
     return (
         <>
-        <li className="text-lg font-semibold" style={{ color: colors[i] }}>
+        <li className="text-lg font-semibold " style={{ color: colors[i] }}>
             <motion.div
-                className="flex items-center justify-center w-16 h-16 rounded-full mr-10"
+                className="flex items-center  justify-center w-16 h-16 rounded-full mr-10"
                 style={style}
                 variants={variants}
                 whileHover={{ scale: 1.1 }}
@@ -100,16 +100,16 @@ export const Navigation = (props) => (
   };
   
   const sidebar = {
-    open: (height = 160) => ({
-      clipPath: `circle(${height * 2 + 200}px at 40px 60px)`,
+    open: (height = 140) => ({
+      clipPath: `circle(${height * 2 + 180}px at  40px 80px)`,
       transition: {
         type: "spring",
         stiffness: 20,
-        restDelta: 2
+        restDelta: 2,
       }
     }),
     closed: {
-      clipPath: "circle(30px at 40px 40px)",
+      clipPath: "circle(60px at 30px 30px)",
       transition: {
         delay: 0.2,
         type: "spring",
@@ -120,34 +120,73 @@ export const Navigation = (props) => (
   };
   
   export const Navbar = () => {
-    
+
     const navVariants = {
-      hidden: {
-        x: '-100%',
-      },
-      visible: {
-        x: 0,
-        transition: {
-          type: 'spring',
-          mass: 0.5,
-          damping: 200,
-        },
-      },
-    };
-  
-    const backgroundVariants = {
-      hidden: {
-        scale: 0,
-      },
-      visible: {
-        scale: 1,
+      open: (height = 1000) => ({
+        clipPath: `circle(${height * 2 + 240}px at  120px 120px)`,
         transition: {
           type: "spring",
-          mass: 1,
-          damping: 40,
-        },
-      },
+          stiffness: 20,
+          restDelta: 2,
+        }
+      }),
+      closed: {
+        clipPath: "circle(60px at 30px 30px)",
+        transition: {
+          delay: 0.2,
+          type: "spring",
+          stiffness: 400,
+          damping: 40
+        }
+      }
     };
+    // const navVariants = {
+    //   hidden: {
+    //     x: '-100%',
+    //   },
+    //   visible: {
+    //     x: 0,
+    //     transition: {
+    //       type: 'spring',
+    //       mass: 0.5,
+    //       damping: 200,
+    //     },
+    //   },
+    // };
+  
+    const backgroundVariants = {
+      open: (height = 200) => ({
+        clipPath: `circle(${height * 2 + 260}px at  40px 80px)`,
+        transition: {
+          type: "spring",
+          stiffness: 20,
+          restDelta: 2
+        }
+      }),
+      closed: {
+        clipPath: "circle(60px at 30px 30px)",
+        transition: {
+          delay: 0.2,
+          type: "spring",
+          stiffness: 400,
+          damping: 40
+        }
+      }
+    }
+
+    // const backgroundVariants = {
+    //   hidden: {
+    //     scale: 0,
+    //   },
+    //   visible: {
+    //     scale: 1,
+    //     transition: {
+    //       type: "spring",
+    //       mass: 1,
+    //       damping: 40,
+    //     },
+    //   },
+    // };
   
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
@@ -159,10 +198,9 @@ export const Navigation = (props) => (
           animate={isOpen ? "open" : "closed"}
           ref={containerRef}
           variants={navVariants}
-          className="w-full md:w-[340px]"
-          // style={{ backgroundColor: isOpen ? "transparent" : "transparent" }}
-        >
-          
+          className="w-full  md:w-[340px]"
+          // style={{ backgroundColor: isOpen ? `transparent` : "transparent" }}
+        > 
           <motion.div
             className="background"
             variants={backgroundVariants}
@@ -170,7 +208,8 @@ export const Navigation = (props) => (
             initial="hidden"
             animate={isOpen ? "visible" : "hidden"}
           />
-          <motion.div className="background " variants={sidebar} />
+
+          <motion.div className="background  " variants={sidebar} />
           <Navigation isOpen={isOpen} toggleOpen={toggleOpen} />
           <MenuToggle toggle={toggleOpen} />
         </motion.nav>

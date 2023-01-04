@@ -8,11 +8,11 @@ const Home = () => {
   return (
     <div className="w-full flex flex-col mx-auto h-screen justify-center items-center">
       <motion.div
-        className="card-container-home perspective-1000"
+        className="perspective-1000"
         drag="x"
         dragConstraints={{ left: -100, right: 100 }}
       >
-        <div className="rounded-2xl shadow-2xl p-12 text-center md:shadow-transparent glassmorphism transform rotate-y-10">
+        <div className="rounded-2xl z-0 h-[300px] w-[400px] shadow-2xl  m-36 p-12 text-center md:shadow-transparent text-white glassmorphism transform rotate-y-10">
           <p className="mb-4 text-2xl">Lorem ipsum dolor sit amet.</p>
           <h1 className="text-4xl font-serif mb-4">GAMISM</h1>
           <p className="text-xl p-8 md:p-4">
@@ -22,7 +22,7 @@ const Home = () => {
         </div>
       </motion.div>
       <motion.div
-        className="mx-auto mt-8"
+        className="mx-auto "
         initial={false}
         animate={isOpen ? "open" : "closed"}
         style={{
