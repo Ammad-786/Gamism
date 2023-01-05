@@ -16,24 +16,24 @@
   align-items: center;
 } */
 body {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #f216f2 0%, rgb(0, 153, 255) 100%);
+  
+  background-image: url('./assets/bg.jpg');
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Cookie', cursive;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 nav {
-  position: absolute;
+  position: fixed; /* Change the positioning to fixed */
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 10;
+  width: 340px; /* Set a fixed width for the navbar */
+  overflow: hidden; /* Add overflow: hidden to prevent content from spilling out of the navbar */
 }
 
 .background {
@@ -42,8 +42,19 @@ nav {
   left: 0;
   bottom: 0;
   width: 340px;
-  background: #fff;
+  background: linear-gradient(90deg,  #ffffff 25%, rgb(226, 173, 249) 0%);
 }
+@media (max-width: 600px) and (orientation: portrait) {
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 340px;
+    background: linear-gradient(90deg, #ffffff 15%, rgb(0, 0, 0) 0%);
+  }
+}
+/* #f216f2 */
 
 
 button {
@@ -126,12 +137,8 @@ li {
   left: 0;
 }
 .glassmorphism {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), 0 2px 2px rgba(0, 0, 0, 1);
+  @apply backdrop-blur;
 }
-.card-container {
-  perspective: 1000px;
-}
-
 .transform {
   transform: rotateY(10deg);
 }

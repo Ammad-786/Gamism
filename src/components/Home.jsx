@@ -8,14 +8,14 @@ const Home = () => {
   return (
     <div className="w-full flex flex-col mx-auto h-screen justify-center items-center">
       <motion.div
-        className="perspective-1000"
+        className="perspective-1000 rounded-2xl transform rotate-y-10 z-0 m-20 p-12 text-center md:shadow-transparent  text-white  glassmorphism h-[300px] w-[400px] shadow-2xl"
         drag="x"
         dragConstraints={{ left: -100, right: 100 }}
       >
-        <div className="rounded-2xl z-0 h-[300px] w-[400px] shadow-2xl  m-36 p-12 text-center md:shadow-transparent text-white glassmorphism transform rotate-y-10">
-          <p className="mb-4 text-2xl">Lorem ipsum dolor sit amet.</p>
-          <h1 className="text-4xl font-serif mb-4">GAMISM</h1>
-          <p className="text-xl p-8 md:p-4">
+        <div className="   text-white ">
+          <p className="mb-4 text-2xl card-text">Lorem ipsum dolor sit amet.</p>
+          <h1 className="text-4xl font-serif mb-4 card-text">GAMISM</h1>
+          <p className="text-xl p-8 md:p-4 card-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Vestibulum at ornare dolor. Suspendisse potenti.
           </p>

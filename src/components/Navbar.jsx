@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { FaHome, FaInfo, FaProjectDiagram, FaTools, FaEnvelope } from "react-icons/fa";
-import navimg from "../assets/nav-img3.jpg"
+import navimg from "../assets/nav-img.jpg"
 // import { FaFacebook, FaTwitter, FaInstagram, FaUser } from "react-icons/fa";
 
 
@@ -17,27 +17,29 @@ const Path = props => (
 );
 
 export const MenuToggle = ({ toggle }) => (
-  
+
   <button onClick={toggle}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },
-          open: { d: "M 3 16.5 L 17 2.5" }
+          open: { d: "M 3 16.5 L 17 2.5" },
+          
         }}
       />
       <Path
         d="M 2 9.423 L 20 9.423"
         variants={{
           closed: { opacity: 1 },
-          open: { opacity: 0 }
+          open: { opacity: 0 },
+          
         }}
         transition={{ duration: 0.1 }}
       />
       <Path
         variants={{
           closed: { d: "M 2 16.346 L 20 16.346" },
-          open: { d: "M 3 2.5 L 17 16.346" }
+          open: { d: "M 3 2.5 L 17 16.346" },
         }}
       />
     </svg>
@@ -65,7 +67,7 @@ export const Navigation = (props) => (
       style={{ display: props.isOpen ? "block" : "none" }}
       variants={variants}
     >
-      <motion.h2 className=" text-6xl font-bold text-center mb-4 pl-[100px] mt-[-80px]" initial={{ y: -50 }} animate={{ y: 0 }}>Gamism</motion.h2>
+      <motion.h2 className="text-black text-6xl font-bold text-center mb-4 pl-[100px] mt-[-80px]" initial={{ y: -50 }} animate={{ y: 0 }}>Gamism</motion.h2>
       {itemIds.map(i => (
         <MenuItem i={i} key={i} colors={colors} />
         ))} 
@@ -73,7 +75,8 @@ export const Navigation = (props) => (
   );
   
   const MenuItem = ({ i, colors }) => {
-    const style = { border: `2px solid ${colors[i]}` };
+    // const style = { border: `2px solid ${colors[i]}` };
+    const style = { border: ` ${colors[i]}` };
     return (
         <>
         <li className="text-lg font-semibold " style={{ color: colors[i] }}>
@@ -109,7 +112,7 @@ export const Navigation = (props) => (
       }
     }),
     closed: {
-      clipPath: "circle(60px at 30px 30px)",
+      clipPath: "circle(50px at 30px 30px)",
       transition: {
         delay: 0.2,
         type: "spring",
@@ -209,7 +212,7 @@ export const Navigation = (props) => (
             animate={isOpen ? "visible" : "hidden"}
           />
 
-          <motion.div className="background  " variants={sidebar} />
+          <motion.div className="background opacity-70" variants={sidebar} />
           <Navigation isOpen={isOpen} toggleOpen={toggleOpen} />
           <MenuToggle toggle={toggleOpen} />
         </motion.nav>
