@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from "./components/Navbar";
-import AboutUs from './components/About';
+// import AboutUs from './components/About';
 import Home from './components/Home';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div>
       <Navbar/>
       <Home/>
-      <AboutUs/>
+      {/* <AboutUs/> */}
     </div>
   );
 }

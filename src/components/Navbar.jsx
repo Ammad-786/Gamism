@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { FaHome, FaInfo, FaProjectDiagram, FaTools, FaEnvelope } from "react-icons/fa";
-import navimg from "../assets/nav-img.jpg"
+import navimg from "../assets/nav-img1.jpg"
 // import { FaFacebook, FaTwitter, FaInstagram, FaUser } from "react-icons/fa";
 
 
