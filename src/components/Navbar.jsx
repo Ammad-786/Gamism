@@ -114,7 +114,7 @@ export const Navigation = (props) => (
     closed: {
       clipPath: "circle(50px at 30px 30px)",
       transition: {
-        delay: 0.2,
+        delay: 0.5,
         type: "spring",
         stiffness: 400,
         damping: 40
