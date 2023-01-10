@@ -108,7 +108,7 @@ nav {
     left: 0;
     bottom: 0;
     width: 340px;
-    background: linear-gradient(90deg, #ffffff 15%, rgb(0, 0, 0) 0%);
+    background: linear-gradient(90deg, #ffffff 15%, rgb(227, 231, 233) 0%);
   }
 }
 /* #f216f2 */
@@ -204,4 +204,61 @@ li {
   top: 0;
   right: 0;
   padding: 4px;
+}
+
+.music-card {
+  
+  color: white;
+  border-radius: 23px;
+}
+
+.music-card-header {
+  
+  color: white;
+  text-align: center;
+}
+
+.music-card-player {
+  margin-top: 12px;
+
+}
+
+/* musicplayer */
+
+.music-player {
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  
+}
+
+.info {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.song-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.artist {
+  font-size: 1rem;
+  color: #888;
 }

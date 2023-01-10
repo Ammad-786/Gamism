@@ -1,19 +1,32 @@
-import React from 'react';
-import aboutbg from "../assets/nav-img.jpg"
- 
-const AboutUs = () => {
+import React from "react";
+// import { motion } from "framer-motion";
+
+function DraggableCard() {
   return (
-    <div id="slider-container h-screen">
-      <div className='flex '>
-        <img id="about-bg" src={aboutbg} alt="/"/>
-        <h1>About Us</h1>
-        <p>We are a team of cat lovers dedicated to spreading joy and feline appreciation through our website.</p>
-        <div className="h-20 w-20 cat-img-container">
-          {/* <img src={catImg} alt="cat sitting on wall" className="cat-img" /> */}
-        </div>
-      </div>
-    </div>
+    <div></div>
+    // <motion.div
+    //   className="relative h-400 w-300 rounded-lg bg-white shadow-md"
+    //   drag
+    //   dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+    // >
+    //   <div className="p-6">
+    //     <h3 className="text-lg font-medium">Card Title</h3>
+    //     <p className="text-gray-600">Card Description</p>
+    //   </div>
+    //   <div className="p-6">
+    //     <img
+    //       src="https://via.placeholder.com/150x150"
+    //       alt="placeholder"
+    //       className="w-full"
+    //     />
+    //   </div>
+    //   <div className="p-6">
+    //     <button className="bg-blue-500 text-white rounded-lg p-2">
+    //       Action
+    //     </button>
+    //   </div>
+    // </motion.div>
   );
 }
 
-export default AboutUs;
+export default DraggableCard;

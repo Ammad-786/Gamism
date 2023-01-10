@@ -59,7 +59,7 @@ const variants = {
 const itemIds = [0, 1, 2, 3, 4];
 const icons = [FaHome, FaInfo, FaProjectDiagram, FaTools, FaEnvelope];
 // const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-const colors = ["/"];
+const colors = ["000", "#000", "#000", "#000", "#000", "#000" ];
 const listNames = ["Home", "About Us", "Projects", "Services", "Contact"];
 
 export const Navigation = (props) => (
