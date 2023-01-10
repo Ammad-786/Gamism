@@ -56,6 +56,10 @@ body {
   background:  rgba(0, 0, 0, 0.448);
   transition: left 0.5s;
 }
+#slider-container:hover #slider {
+  left: 100%;
+}
+
 .slider1 {
   position: relative;
   top: 0;
@@ -74,9 +78,7 @@ body {
   background:  rgb(255, 119, 0);
 }
 
-#slider-container:hover #slider {
-  left: 100%;
-}
+
 .h1font{
   font-family: 'Russo One', sans-serif;
 }
