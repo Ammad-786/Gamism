@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { motion, useCycle } from "framer-motion";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaSearch, FaTimes } from "react-icons/fa";
 import sliderimg from "../assets/Slider1.png"
 import slider1 from "../assets/slider1.jpg"
 import ReactAudioPlayer from 'react-audio-player';
@@ -10,7 +10,9 @@ import song from "../assets/track1.mp3"
 
 const Home = () => {
   const [slide, setSlide] = useState(false);
-  
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [showSearchIcon, setShowSearchIcon] = useState(true);
+
   const slideStyle = {
     position: 'fixed',
     top: 0,
@@ -25,10 +27,39 @@ const Home = () => {
 
   return (
     <div>
-      <div id="slider-container">
+      <div id="slider-container" >
         <div className="w-full lg:flex sm:grid sm:grid-cols-1 h-[100vh]  md:flex md:flex-row 100vh  mx-auto ">
-          <div className="slider1">
-            <div className="myDivStyles1 mx-auto flex flex-col items-center justify-center text-center">  
+          <div className="slider1 relative border-orange-10"  >
+          <navi className="mx-auto flex flex-col h-24 max-w-[1240px] justify-end ">
+            <div className="search-container p-8 justify-end flex">
+              {showSearchIcon && (
+                <FaSearch
+                onClick={() => {
+                  setShowSearchBar(!showSearchBar);
+                  setShowSearchIcon(!showSearchIcon);
+                }}
+                  className=" text-white h-8 w-6"
+                />
+              )}
+              {showSearchBar && (
+                <div className="search-bar-container ">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="search-bar show-search-bar text-2xl justify-end mx-auto flex rounded-2xl bg-white p-4 "
+                  />
+                  <FaTimes
+                    onClick={() => {
+                      setShowSearchBar(false);
+                      setShowSearchIcon(true);
+                    }}
+                    className="close-icon "
+                  />
+                </div>
+              )}
+            </div>
+          </navi>
+            <div className="myDivStyles1 mx-auto flex flex-col items-center mt-[-100px] justify-center text-center">  
               <motion.div
                 className="perspective-1000 flex  rounded-2xl transform rotate-y-10 z-0 m-20 p-12 text-center md:shadow-black  text-white  glassmorphism h-[300px] w-[400px] shadow-md"
                 drag="x"
@@ -74,7 +105,7 @@ const Home = () => {
           </div>
         
 
-          <div className="slider2 justify-center mx-auto items-center text-center flex flex-col ">
+          <div className="slider2 border-orange-10  justify-center mx-auto items-center text-center flex flex-col ">
             <div className="myDivStyles2 mx-auto flex flex-col flex-wrap items-center justify-center text-center">
                 <motion.div
                     className="glassmorphism h-300 w-300 rounded-md shadow-black shadow-md music-card"
