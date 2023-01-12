@@ -1,17 +1,20 @@
 import * as React from "react";
 import { useState } from "react";
-import { motion, useCycle } from "framer-motion";
-import { FaFacebook, FaTwitter, FaInstagram, FaSearch, FaTimes } from "react-icons/fa";
+import { motion, useCycle, AnimatePresence } from "framer-motion";
+import { FaFacebook, FaTwitter, FaInstagram, FaSearch, FaTimes, FaUserCircle } from "react-icons/fa";
 import sliderimg from "../assets/Slider1.png"
 import slider1 from "../assets/slider1.jpg"
 import ReactAudioPlayer from 'react-audio-player';
 import song from "../assets/track1.mp3"
+import userProfile from "../assets/2.jpg"
+
 
 
 const Home = () => {
   const [slide, setSlide] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showSearchIcon, setShowSearchIcon] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
   const slideStyle = {
     position: 'fixed',
@@ -29,37 +32,37 @@ const Home = () => {
     <div>
       <div id="slider-container" >
         <div className="w-full lg:flex sm:grid sm:grid-cols-1 h-[100vh]  md:flex md:flex-row 100vh  mx-auto ">
-          <div className="slider1 relative border-orange-10"  >
-          <navi className="mx-auto flex flex-col h-24 max-w-[1240px] justify-end ">
-            <div className="search-container p-8 justify-end flex">
-              {showSearchIcon && (
-                <FaSearch
-                onClick={() => {
-                  setShowSearchBar(!showSearchBar);
-                  setShowSearchIcon(!showSearchIcon);
-                }}
-                  className=" text-white h-8 w-6"
-                />
-              )}
-              {showSearchBar && (
-                <div className="search-bar-container ">
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    className="search-bar show-search-bar text-2xl justify-end mx-auto flex rounded-2xl bg-white p-4 "
+          <div className="slider1 relative border-orange-10 flex flex-col"  >
+            <navi1 className="w-full flex h-24 p-8 justify-end ">
+              <div className=" justify-end flex">
+                {showSearchIcon && (
+                  <FaSearch
+                  onClick={() => {
+                    setShowSearchBar(!showSearchBar);
+                    setShowSearchIcon(!showSearchIcon);
+                  }}
+                    className=" text-white h-8 w-6"
                   />
-                  <FaTimes
-                    onClick={() => {
-                      setShowSearchBar(false);
-                      setShowSearchIcon(true);
-                    }}
-                    className="close-icon "
-                  />
-                </div>
-              )}
-            </div>
-          </navi>
-            <div className="myDivStyles1 mx-auto flex flex-col items-center mt-[-100px] justify-center text-center">  
+                )}
+                {showSearchBar && (
+                  <div className="search-bar-container ">
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      className="search-bar show-search-bar text-2xl justify-end mx-auto flex rounded-2xl bg-white p-4 "
+                    />
+                    <FaTimes
+                      onClick={() => {
+                        setShowSearchBar(false);
+                        setShowSearchIcon(true);
+                      }}
+                      className="close-icon "
+                    />
+                  </div>
+                )}
+              </div>
+            </navi1>
+            <div className="myDivStyles1 mx-auto flex flex-col items-center  justify-center text-center">  
               <motion.div
                 className="perspective-1000 flex  rounded-2xl transform rotate-y-10 z-0 m-20 p-12 text-center md:shadow-black  text-white  glassmorphism h-[300px] w-[400px] shadow-md"
                 drag="x"
@@ -104,34 +107,61 @@ const Home = () => {
             </div>
           </div>
         
-
-          <div className="slider2 border-orange-10  justify-center mx-auto items-center text-center flex flex-col ">
-            <div className="myDivStyles2 mx-auto flex flex-col flex-wrap items-center justify-center text-center">
-                <motion.div
-                    className="glassmorphism h-300 w-300 rounded-md shadow-black shadow-md music-card"
-                    drag
-                    dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                >
-                    <div className="p-6 text-white music-card-header bg-black">
-                        <h3 className=" text-4xl font-medium">Music Player</h3>
-                        <p>Beats</p>
-                    </div>
-                    <div className="p-6 ">
-                        <img
-                            src={slider1}
-                            alt="album art"
-                            className="w-[250px] h-[250px]  rounded-full"
-                        />
-                    </div>
-                    <ReactAudioPlayer
-                        src={song}
-                        controls
-                        className="music-card-player w-full pb-6 px-6"
-                    />
-                </motion.div>
+          <div className="slider2 relative border-orange-10 flex flex-col "  >
+          <navi2 className="w-full h-24 justify-end flex p-8">
+            <div onClick={() => setShowContent(!showContent)}>
+              {!showContent && <FaUserCircle className="h-8 w-8 " />}
             </div>
+            <AnimatePresence>
+              {showContent && (
+                <motion.div
+                  initial={{ y: -100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -100, opacity: 0 }}
+                  className="additional-content 3d-effect"
+                >
+                        <div className="flex flex-row items-center gap-8">
+                        <FaTimes onClick={() => setShowContent(!showContent)} className=" justify-end flex mx-auto"/>
+                          <ul className="flex flex-col top-8">
+                            <div className='flex flex-row gap-6'>
+                            <li><img className='h-16 w-16 rounded-full' src={userProfile} alt="User Profile" /></li>
+                            <li><p className='card-p'>John Doe</p></li>
+                            </div>
+                            <li>Home</li>
+                            <li>Settings</li>
+                            <li>Logout</li>
+                          </ul>
+                      </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </navi2>
+              <div className="myDivStyles2 mx-auto flex flex-col flex-wrap items-center justify-center text-center">
+                  <motion.div
+                      className="glassmorphism h-300 w-300 rounded-md shadow-black shadow-md music-card"
+                      drag
+                      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+                  >
+                      <div className="p-6 text-white music-card-header bg-orange-500">
+                          <h3 className=" text-4xl font-medium">Music Player</h3>
+                          <p>Beats</p>
+                      </div>
+                      <div className="p-6 ">
+                          <img
+                              src={slider1}
+                              alt="album art"
+                              className="w-[250px] h-[250px]  rounded-full"
+                          />
+                      </div>
+                      <ReactAudioPlayer
+                          src={song}
+                          controls
+                          className="music-card-player w-full pb-6 px-6"
+                      />
+                  </motion.div>
+              </div>
           </div>
-        
+
           <motion.div
             id="slider"
             style={slideStyle}
