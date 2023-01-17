@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <div>
       <div id="slider-container" >
-        <div className="w-full lg:flex sm:grid sm:grid-cols-1 h-[100vh]  md:flex md:flex-row 100vh  mx-auto ">
+        <div className="w-full lg:flex sm:grid sm:grid-cols-1 h-screen md:flex md:flex-row 100vh  mx-auto ">
           <div className="slider1 relative border-orange-10 flex flex-col"  >
             <navi1 className="w-full flex h-24 p-8 justify-end ">
               <div className=" justify-end flex">
@@ -127,9 +127,9 @@ const Home = () => {
                             <li><img className='h-16 w-16 rounded-full' src={userProfile} alt="User Profile" /></li>
                             <li><p className='card-p'>John Doe</p></li>
                             </div>
-                            <li>Home</li>
-                            <li>Settings</li>
-                            <li>Logout</li>
+                            <li className="lifont">Home</li>
+                            <li className="lifont">Settings</li>
+                            <li className="lifont">Logout</li>
                           </ul>
                       </div>
                 </motion.div>
@@ -142,7 +142,7 @@ const Home = () => {
                       drag
                       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                   >
-                      <div className="p-6 text-white music-card-header bg-orange-500">
+                      <div className="p-6 rounded-2xl text-white music-card-header bg-orange-500">
                           <h3 className=" text-4xl font-medium">Music Player</h3>
                           <p>Beats</p>
                       </div>
